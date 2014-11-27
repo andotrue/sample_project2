@@ -7,8 +7,8 @@ return array(
       'default' => 
       array(
         0 => '001_create_demo_scaffolds',
-        1 => '001_create_sample2s',
-        2 => '002_rename_table_sample2s_to_movies',
+        1 => '002_create_sample2s',
+        2 => '003_rename_table_sample2s_to_movies',
       ),
     ),
     'module' => 

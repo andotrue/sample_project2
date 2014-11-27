@@ -1,5 +1,5 @@
 <div class="content">
- <h1>ようこそ<?=$title?></h1>
+ <h1>ようこそ<?=Auth::get_screen_name()?>さん</h1>
  <p><?=$description?></p>
  <table width="100%" border="1">
  <tr>
@@ -13,4 +13,5 @@
  </tr>
  <?php endforeach;?>
  </table>
+ <p><a href="logout">ログアウト</a></p>
  </div>
