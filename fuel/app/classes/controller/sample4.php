@@ -1,6 +1,9 @@
 <?php
  class Controller_Sample4 extends Controller
  {
+ 	/*
+ 	 * http://w.builwing.info/2012/03/12/fuelphp%E3%81%AEfieldset%E3%81%A7e%E3%83%A1%E3%83%BC%E3%83%AB%E9%80%81%E4%BF%A1/
+ 	 */
 	 public function action_index()
 	 {
 		 //フィールドセットのインスタンス化
@@ -51,7 +54,10 @@
 			 return $view;
 		 }
 	 }
-
+	 
+	 /*
+	  * http://d.hatena.ne.jp/Kenji_s/20120130/1327911897
+	  */
 	 public function action_index3()
 	 {
 		 $form = Fieldset::forge();
@@ -106,10 +112,21 @@
 		 //入力値の保持
 		 $form->repopulate();
 		 //ビューオブジェクトの作成
-		 $view=View::build('sample4/test3');
-		 $view->set_safe('mail_form',$form);
+		 $view=View::forge('sample4/test3');
+		 $view->set_safe('html_form',$form);
 		 
 		 return $view;
 	 }
  
+	 /*
+	  * http://blog.fagai.net/2012/10/26/fuelphp_fieldset_1/
+	  */
+	 public function action_index4()
+	 {
+	 	$user_form = Fieldset::forge('user_form');
+	 	$user_form->add('name', 'お名前', array('type'=>'text', 'size'=>40, 'value'=>'ここに名前が入ります'));
+	 	$user_form->add('sex', '性別', array('type'=>'radio', 'options'=>array(1=>'男性', 2=>'女性'), 'value'=>1));
+	 	$user_form->add('submit', '', array('type'=>'submit', 'value'=>'送信'));
+	 	echo $user_form->build('member/send');
+	 }
  }
