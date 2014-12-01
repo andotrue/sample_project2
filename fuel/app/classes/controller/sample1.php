@@ -1,6 +1,11 @@
 <?php
  class Controller_Sample1 extends Controller
  {
+ 	/*
+ 	 * http://w.builwing.info/2012/02/20/fuelphpのビュー/
+ 	 * http://w.builwing.info/2012/02/21/fuelphpでデータベース接続/
+ 	 * http://w.builwing.info/2012/02/28/fuelphpで簡単認証システム/
+ 	 */
 	 public function action_index()
 	 {
 	 	//認証していなかったら
@@ -27,7 +32,9 @@
 
 	 }
 	 
-	 
+	 /*
+	  * http://w.builwing.info/2012/02/21/fuelphpでデータベース接続/
+	  */
 	 public function action_dbtest()
 	 {
 	 	//データベース接続
@@ -37,11 +44,9 @@
 	 	endforeach;
 	 }
 
-	 public function action_createmail()
-	 {
-	 	return Response::forge(View::forge('sample1/createmail'));
-	 }
-	 
+	 /*
+	  * http://w.builwing.info/2012/02/22/fuelphpで簡単email送信/
+	  */
 	 public function action_sendmail()
 	 {
 		 //POSTデータを受け取る
@@ -61,7 +66,15 @@
 		 //メール送信後のビュー表示
 		 return Response::forge(View::forge('sample1/sendmail'));
 	 }
+	 public function action_createmail()
+	 {
+	 	return Response::forge(View::forge('sample1/createmail'));
+	 }
 	 
+	 
+ 	/*
+ 	 * http://w.builwing.info/2012/02/28/fuelphpで簡単認証システム/
+ 	 */
 	 public function action_login()
 	 {
 	 	$data = array();
@@ -87,7 +100,6 @@
 	 	// ログインフォームの表示
 	 	echo View::forge('sample1/login',$data);
 	 }
-
 	 public function action_add_user()
 	 {
 	 	if ($_POST)
@@ -104,7 +116,6 @@
 	 	// 登録フォームの表示
 	 	echo View::forge('sample1/add_user');
 	 }
-	 
 	 public function action_logout()
 	 {
 	 	//ログアウト

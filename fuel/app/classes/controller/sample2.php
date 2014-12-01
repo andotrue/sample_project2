@@ -1,4 +1,10 @@
 <?php
+/*
+ * http://w.builwing.info/2012/02/24/fuelphpのoilで簡単アプリケーション作成/
+ * # php oil g scaffold sample2 tiltle:string content:text
+ * # php oil refine migrate
+ * # php oil g migration rename_table_sample2s_to_movies
+ */
 class Controller_Sample2 extends Controller_Template
 {
 

@@ -1,8 +1,11 @@
 <?php
+/*
+ * Fieldsetクラスサンプル
+ */
  class Controller_Sample4 extends Controller
  {
  	/*
- 	 * http://w.builwing.info/2012/03/12/fuelphp%E3%81%AEfieldset%E3%81%A7e%E3%83%A1%E3%83%BC%E3%83%AB%E9%80%81%E4%BF%A1/
+ 	 * http://w.builwing.info/2012/03/12/fuelphpのfieldsetでeメール送信/
  	 */
 	 public function action_index()
 	 {
@@ -56,6 +59,7 @@
 	 }
 	 
 	 /*
+	  * FuelPHP の Fieldset を使おう(Form の自動生成)
 	  * http://d.hatena.ne.jp/Kenji_s/20120130/1327911897
 	  */
 	 public function action_index3()
@@ -111,15 +115,37 @@
 
 		 //入力値の保持
 		 $form->repopulate();
+		 
+		 //ビューを使わない場合
+		 //echo $form->build('/form/confirm');
+
+		 //ビューを使う場合
 		 //ビューオブジェクトの作成
 		 $view=View::forge('sample4/test3');
-		 $view->set_safe('html_form',$form);
-		 
+		 $view->set_safe('html_form',$form->build('/form/confirm'));
 		 return $view;
 	 }
+	 
+	 /*
+	  * FuelPHP の Fieldset を使おう(Form の自動生成)
+	  * http://d.hatena.ne.jp/Kenji_s/20120130/1327911897
+	  * comment:
+	  *   Fieldset を使わずに、HTML を書いていく場合
+	 */
+	 public function action_index32(){
+	 	$view=View::forge('sample4/test3-2');
+	 	return $view;
+	 }
+	 
  
 	 /*
+	  * FuelPHPのFieldsetクラスをまとめてみた。１
 	  * http://blog.fagai.net/2012/10/26/fuelphp_fieldset_1/
+	  * comment:
+	  * 	ビューを使わない
+	  * 	buildメソッドのパラメタが送信先になる
+	  * 	Fieldset::forge(‘user_form’);
+	  *		  Fieldsetクラスのインスタンスを返すメソッドです。第１引数にはインスタンスに名前を付けることが出来ます。(デフォルトは’default’)
 	  */
 	 public function action_index4()
 	 {
@@ -129,4 +155,25 @@
 	 	$user_form->add('submit', '', array('type'=>'submit', 'value'=>'送信'));
 	 	echo $user_form->build('member/send');
 	 }
+	 
+	 /*
+	  * FuelPHPのFieldsetクラスをまとめてみた。2
+	 * http://blog.fagai.net/2012/10/29/fuelphp_fieldset_2/
+	 */
+	 public function action_index5() {
+	 	$article = Model_Article::forge();
+	 
+	 	$add_form = Fieldset::forge('add_form');
+	 	$add_form->add_model($article)->populate($article);
+	 
+	 	$view = View::forge('sample4/test5');
+	 
+	 	$view->set('form', $add_form->build(), false);
+	 	//$view->set_safe('form',$form->build('/form/confirm'));
+	 
+	 	return Response::forge($view);
+	 	//return $view;
+	 
+	 }
+	 
  }
