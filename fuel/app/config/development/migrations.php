@@ -12,6 +12,8 @@ return array(
         3 => '004_create_users',
         4 => '005_create_articles',
         5 => '006_create_test',
+        6 => '007_create_dvd',
+        7 => '007_create_dvds',
       ),
     ),
     'module' => 
