@@ -1,1 +1,1 @@
-andotest
+<p>vews/andotest/index.php</p>
