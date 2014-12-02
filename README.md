@@ -17,3 +17,8 @@ sample1,sample2,sample4
 <pre>
 testhome
 </pre>
+
+* [FuelPHPのFieldsetクラスをまとめてみた。2](http://blog.fagai.net/2012/10/29/fuelphp_fieldset_2/)
+<pre>
+sample4
+</pre>
