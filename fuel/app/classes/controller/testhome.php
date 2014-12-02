@@ -10,6 +10,7 @@ class Controller_Testhome extends Controller {
 		
 		$data['username'] = 'Joe14';
 		$data['title'] = 'Home';
+		Debug::dump($data);
 		
 		//assign the view to browser output
 		return View::forge('testhome/index', $data);

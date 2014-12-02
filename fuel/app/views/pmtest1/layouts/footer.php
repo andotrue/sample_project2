@@ -2,7 +2,7 @@
 	<hr>
 	<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
 	<p>
-		<a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.<br>
+		<?php echo Html::anchor('http://fuelphp.com/', 'FuelPHP'); ?> is released under the MIT license.<br>
 		<small>Version: <?php echo e(Fuel::VERSION); ?></small>
 	</p>
 	<p>
@@ -20,8 +20,12 @@
 				<li><?php echo Request::main()->action; ?></li>
 				<li><?php echo Request::active()->action; ?></li>
 			</ul>
+			Inputクラス
+			<ul>
+				<li><?php echo Input::extension(); ?></li>
+			</ul>
 
-		</small>
+					</small>
 	</p>
 		
 	
