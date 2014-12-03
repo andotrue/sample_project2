@@ -9,20 +9,20 @@
 		<small>
 			Uriクラス
 			<ul>
-				<li><?php echo Uri::base(); ?></li>
-				<li><?php echo Uri::current(); ?></li>
-				<li><?php echo Uri::main(); ?></li>
-				<li><?php echo Uri::string(); ?></li>
+				<li>Uri::base()---><?php echo Uri::base(); ?></li>
+				<li>Uri::current()---><?php echo Uri::current(); ?></li>
+				<li>Uri::main()---><?php echo Uri::main(); ?></li>
+				<li>Uri::string()---><?php echo Uri::string(); ?></li>
 			</ul>
 			Requestクラス
 			<ul>
-				<li><?php echo Request::main()->controller; ?></li>
-				<li><?php echo Request::main()->action; ?></li>
-				<li><?php echo Request::active()->action; ?></li>
+				<li>Request::main()->controller---><?php echo Request::main()->controller; ?></li>
+				<li>Request::main()->action---><?php echo Request::main()->action; ?></li>
+				<li>Request::active()->action---><?php echo Request::active()->action; ?></li>
 			</ul>
 			Inputクラス
 			<ul>
-				<li><?php echo Input::extension(); ?></li>
+				<li>Input::extension()---><?php echo Input::extension(); ?></li>
 			</ul>
 
 					</small>

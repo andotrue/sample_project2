@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
 	<?php echo Asset::css('bootstrap.css'); ?>
+	<link rel='stylesheet' href='js/lib/bootstrap/css/bootstrap.min.css'/>
+	
 	<style>
 		body { margin: 40px; }
 	</style>
@@ -34,11 +36,11 @@
 
 	<section>
 	<div class="row">
-		<div class="col-sm-2" style="background-color: blue;">
+		<div class="col-sm-3" style="background-color: white; border:1px solid">
 			<?/****メニュー****/ ?>
 			<?php echo $menu; ?>
 		</div>
-		<div class="col-sm-10" style="background-color: red;">
+		<div class="col-sm-9" style="background-color: white; border:1px solid">
 			<?/****メインコンテンツ****/ ?>
 			<?php echo $content; ?>
 		</div>
