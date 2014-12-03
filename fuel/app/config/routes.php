@@ -4,4 +4,26 @@ return array(
 	'_404_'   => 'welcome/404',    // The main 404 route
 	
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
+	
+	//正規表現によるルーティング
+	'bbs/(:any)' => 'routingtest/entry$1',// bbs/abc, bbs/about
+	'(:segment)/about' => 'routingtest/about/$1',// seles/about
+	'([0-9]{3})/detail' => 'routingtest/id/$1',// 123/detail
+	
+	//名前付きパラメータによるルーティング
+	'cal/:year/:month/:day/:any' => 'welcome/404',// cal/2014/02/22/abc
+	'cal/:year/:month/:day' => 'routingtest/cal',// cal/2014/02/22
+	'cal/:year/:month' => 'routingtest/cal',// cal/2014/02
+	'cal/:year' => 'routingtest/cal',// cal/2014
+	
+	// HTTPメソッドによるルーティング
+	'api/(:any)' => array(
+		array('GET', new Route('routingtest/get/$1')),// api/abc にGETメソッドでアクセスした場合
+		array('POST', new Route('routingtest/post/$1'))// api/abc にPOSTメソッドでアクセスした場合
+	),
+		
+	//名前付きルート
+	'dashboard' => array('admin/index', 'name' => 'admin'),// dashboard
+	'admin/dashboard' => array('admin/index', 'name' => 'admin'),// admin/dashboard
+		
 );
