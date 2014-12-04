@@ -54,8 +54,7 @@
 		//$magazines = DB::select('id', 'title')->from('magazines')->execute()->as_array();
 		//4. ORMパッケージ
 		$magazines = Model_Magazine::find('all');//結果はモデルクラスのオブジェクトとして返ります。
-
-		Debug::dump($magazines);
+		//Debug::dump($magazines);
 
 		$menu["magazines"] = $magazines;
 		$this->template->menu = View::forge('pmtest1/layouts/menu',$menu);

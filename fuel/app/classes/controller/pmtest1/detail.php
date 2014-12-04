@@ -39,8 +39,7 @@
 		 */
 		$magazines = Model_Magazine::find("all");//結果はモデルクラスのオブジェクトとして返ります。
 		$article = Model_Magazine::find($id);//結果はモデルクラスのオブジェクトとして返ります。
-		
-		Debug::dump($article);
+		//Debug::dump($article);
 
 		$menu["magazines"] = $magazines;
 		$this->template->menu = View::forge('pmtest1/layouts/menu',$menu);

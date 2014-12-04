@@ -3,7 +3,7 @@ return array(
 	'_root_'  => 'welcome/index',  // The default route
 	'_404_'   => 'welcome/404',    // The main 404 route
 	
-	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
+	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),// hello/ando
 	
 	//正規表現によるルーティング
 	'bbs/(:any)' => 'routingtest/entry$1',// bbs/abc, bbs/about

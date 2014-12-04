@@ -16,8 +16,6 @@
 	<?/****ヘッダー****/ ?>
 	<?php echo $header; ?>
 
-	<?/****サブヘッダー****/ ?>
-	<?php echo $subheader; ?>
 	
 	<div class="col-md-12">
 <?php if (Session::get_flash('success')): ?>
@@ -36,12 +34,17 @@
 
 	<section>
 	<div class="row">
-		<div class="col-sm-3" style="background-color: white; border:1px solid">
-			<?/****メニュー****/ ?>
+		<?/****サブヘッダー****/ ?>
+		<div class="col-sm-12" style="background:#FFFF00; border:1px solid">
+			<?php echo $subheader; ?>
+		</div>
+
+		<?/****メニュー****/ ?>
+		<div class="col-sm-3" style="background-color: #FFFF00; border:1px solid">
 			<?php echo $menu; ?>
 		</div>
-		<div class="col-sm-9" style="background-color: white; border:1px solid">
-			<?/****メインコンテンツ****/ ?>
+		<?/****メインコンテンツ****/ ?>
+		<div class="col-sm-9" style="background-color: #FFFF00; border:1px solid">
 			<?php echo $content; ?>
 		</div>
 	</div>
