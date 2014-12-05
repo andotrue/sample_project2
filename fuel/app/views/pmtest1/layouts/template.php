@@ -46,7 +46,10 @@
 		<?/****メインコンテンツ****/ ?>
 		<div class="col-sm-9" style="background-color: #FFFF00; border:1px solid">
 			<?php echo $content; ?>
+			<?php echo $menufooter; ?>
 		</div>
+		
+		
 	</div>
 	</section>
 

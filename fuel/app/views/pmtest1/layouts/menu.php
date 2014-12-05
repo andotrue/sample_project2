@@ -7,7 +7,7 @@
 	<tbody>
 		<?php foreach ($magazines as $row): ?>
 		<tr>
-			<td><h6><?=Html::anchor(Uri::base().'pmtest1/detail/?id='.$row['id'], $row['title']);?><h6></td>
+			<td><h6><?=Html::anchor(Uri::base().Uri::segment(1).'/detail/?id='.$row['id'], $row['title']);?><h6></td>
 		</tr>
 		<?php endforeach;?>
 	</tbody>

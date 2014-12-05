@@ -1,5 +1,5 @@
 <?php
- class Controller_Pmtest1_Detail extends Controller_Template
+ class Controller_Pmtest1_Magazine extends Controller_Template
 {
 	public $template = 'pmtest1/layouts/template';
 	/*
@@ -31,24 +31,20 @@
 	}
 	
 	public function action_index() {
-		$this->template->title = "detail";
+		$this->template->title = "magazine";
 
-		$id = Input::get("id");
-		
 		/*データ取得
 		 */
 		$magazines = Model_Magazine::find("all");//結果はモデルクラスのオブジェクトとして返ります。
-		$article = Model_Magazine::find($id);//結果はモデルクラスのオブジェクトとして返ります。
 		//Debug::dump($article);
 
 		$menu["magazines"] = $magazines;
 		$this->template->menu = View::forge('pmtest1/layouts/menu',$menu);
 
-		$content['article'] = $article;
-		$this->template->content = View::forge('pmtest1/detail/content',$content);
+		$content = "";
+		$this->template->content = View::forge('pmtest1/magazine/content',$content);
 
 		$this->template->menufooter = View::forge('pmtest1/layouts/menufooter',$menu);
-
 	}
 
 }
