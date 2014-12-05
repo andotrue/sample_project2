@@ -1,7 +1,9 @@
 <?php
- class Controller_Pmtest1 extends Controller_Template
+namespace pm;
+
+ class Controller_Pm extends \Controller_Template
 {
-	public $template = 'pmtest1/layouts/template';
+	public $template = 'layouts/template';
 	/*
 	 * 
 	 */	public function before()
@@ -10,14 +12,14 @@
 		
 		//header.phpをテンプレートの$headerとbindさせる。
 		$header['title'] = 'header';
-		$this->template->header = View::forge('pmtest1/layouts/header',$header);
+		$this->template->header = \View::forge('layouts/header',$header);
 		
 		$subheader = "";
-		$this->template->subheader = View::forge('pmtest1/layouts/subheader',$subheader);
+		$this->template->subheader = \View::forge('layouts/subheader',$subheader);
 		
 		//footer.phpをテンプレートの$footerとbindさせる。
 		$footer = "";
-		$this->template->footer = View::forge('pmtest1/layouts/footer',$footer);
+		$this->template->footer = \View::forge('layouts/footer',$footer);
 	}
 	
 	/*
@@ -35,7 +37,7 @@
 	 */
 	public function action_notemplate() {
 		// Response オブジェクトが返されると、それが優先され、テンプレートなしのコンテンツが表示される
-		return new Response(View::forge('pmtest1/index', $content));
+		return new Response(\View::forge('index', $content));
 	}
 	
 	public function action_index() {
@@ -57,12 +59,12 @@
 		//Debug::dump($magazines);
 
 		$menu["magazines"] = $magazines;
-		$this->template->menu = View::forge('pmtest1/layouts/menu',$menu);
+		$this->template->menu = \View::forge('layouts/menu',$menu);
 
 		$content['article'] = '記事です';
-		$this->template->content = View::forge('pmtest1/content',$content);
+		$this->template->content = \View::forge('index',$content);
 		
-		$this->template->menufooter = View::forge('pmtest1/layouts/menufooter',$menu);
+		$this->template->menufooter = \View::forge('layouts/menufooter',$menu);
 		
 	}
 
