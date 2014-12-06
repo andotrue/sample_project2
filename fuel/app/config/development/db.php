@@ -10,5 +10,6 @@ return array(
 			'username'   => 'fuel_db_user',
 			'password'   => 'passwd',
 		),
+		'profiling' => true,//add 20141206 by ando
 	),
 );
