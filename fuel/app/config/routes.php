@@ -5,6 +5,7 @@ return array(
 	
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),// hello/ando
 	
+	/*
 	//正規表現によるルーティング
 	'bbs/(:any)' => 'book/routingtest/entry$1',// bbs/abc, bbs/about
 	'(:segment)/about' => 'book/routingtest/about/$1',// seles/about
@@ -25,5 +26,5 @@ return array(
 	//名前付きルート
 	'dashboard' => array('book/admin/index', 'name' => 'admin'),// dashboard
 	'admin/dashboard' => array('book/admin/index', 'name' => 'admin'),// admin/dashboard
-		
+	*/
 );
