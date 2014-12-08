@@ -27,7 +27,25 @@
 		</div>	
 		</div>
 	
-	<div class="row">
-	</div>
-		
 </div>
+
+<p style="background-color: #339900; text-align:center; color:white; border:1px solid">懸賞応募</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12" style="background:white; border:0px solid">
+		<table>
+		<tr>
+		<td>
+		<img src="">
+		</td>
+		<td>
+		xxxx年x月号<br />
+		締切日:xxxx-xx-xx<br />
+		<?=Html::anchor(Uri::base().Uri::segment(1).'/apply/', '懸賞に応募する');?><br />
+		</td>
+		</tr>
+		</table>
+		</div>
+	</div>
+</div>
+

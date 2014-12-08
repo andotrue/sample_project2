@@ -1,5 +1,7 @@
 <?php
 namespace pm;
+require_once realpath(__DIR__.'/common.php');
+
 
  class Controller_Pm extends \Controller_Template
 {
@@ -9,7 +11,9 @@ namespace pm;
 	 */	public function before()
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
-		
+		$common = new Common();
+		$common->test($this->template);
+		/*
 		//header.phpをテンプレートの$headerとbindさせる。
 		$header['title'] = 'header';
 		$this->template->header = \View::forge('layouts/header',$header);
@@ -20,6 +24,7 @@ namespace pm;
 		//footer.phpをテンプレートの$footerとbindさせる。
 		$footer = "";
 		$this->template->footer = \View::forge('layouts/footer',$footer);
+		*/
 	}
 	
 	/*
