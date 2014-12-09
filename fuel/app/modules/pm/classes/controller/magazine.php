@@ -1,5 +1,6 @@
 <?php
 namespace pm;
+require_once realpath(__DIR__.'/common.php');
 
  class Controller_Magazine extends \Controller_Template
 {
@@ -9,17 +10,8 @@ namespace pm;
 	 */	public function before()
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
-		
-		//header.phpをテンプレートの$headerとbindさせる。
-		$header['title'] = 'header';
-		$this->template->header = \View::forge('layouts/header',$header);
-		
-		$subheader = "";
-		$this->template->subheader = \View::forge('layouts/subheader',$subheader);
-		
-		//footer.phpをテンプレートの$footerとbindさせる。
-		$footer = "";
-		$this->template->footer = \View::forge('layouts/footer',$footer);
+		$common = new Common();
+		$common->common_views($this->template);
 	}
 	
 	/*
@@ -33,20 +25,10 @@ namespace pm;
 	}
 	
 	public function action_index() {
-		$this->template->title = "magazine";
+		$this->template->title = "パズルメイト携帯サイトへはこちらから｜パズルメイト";
 
-		/*データ取得
-		 */
-		$magazines = Model_Magazine::find("all");//結果はモデルクラスのオブジェクトとして返ります。
-		//Debug::dump($article);
-
-		$menu["magazines"] = $magazines;
-		$this->template->menu = \View::forge('layouts/menu',$menu);
-
-		$content = "";
+		$content['article'] = '各紙紹介ページです';
 		$this->template->content = \View::forge('magazine',$content);
-
-		$this->template->menufooter = \View::forge('layouts/menufooter',$menu);
 	}
 
 }

@@ -2,7 +2,6 @@
 namespace pm;
 require_once realpath(__DIR__.'/common.php');
 
-
  class Controller_Pm extends \Controller_Template
 {
 	public $template = 'layouts/template';
@@ -12,19 +11,7 @@ require_once realpath(__DIR__.'/common.php');
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
 		$common = new Common();
-		$common->test($this->template);
-		/*
-		//header.phpをテンプレートの$headerとbindさせる。
-		$header['title'] = 'header';
-		$this->template->header = \View::forge('layouts/header',$header);
-		
-		$subheader = "";
-		$this->template->subheader = \View::forge('layouts/subheader',$subheader);
-		
-		//footer.phpをテンプレートの$footerとbindさせる。
-		$footer = "";
-		$this->template->footer = \View::forge('layouts/footer',$footer);
-		*/
+		$common->common_views($this->template);
 	}
 	
 	/*
@@ -46,31 +33,10 @@ require_once realpath(__DIR__.'/common.php');
 	}
 	
 	public function action_index() {
-		$this->template->title = "index";
+		$this->template->title = "パズルメイト｜ (株)マガジン・マガジンのパズル総合サイト";
 
-		/*データ取得
-		 *http://blog.a-way-out.net/blog/2014/07/09/fuelphp-database/
-		 *	FuelPHPのモデルとデータベース操作方法の選択
-		 */
-		//1. DB::query()メソッド（DBクラス）
-		//$magazines = DB::query('SELECT * FROM magazines')->execute()->as_array();//結果を連想配列で受け取る
-		//$magazines = DB::query('SELECT * FROM magazines')->as_object()->execute()->as_array();//結果をオブジェクトで受け取る
-		//2. クエリビルダー（DBクラス）
-		//$magazines = DB::select()->from('magazines')->execute()->as_array();//結果を連想配列で受け取る
-		//$magazines = DB::select()->from('magazines')->as_object()->execute()->as_array();//結果をオブジェクトで受け取る
-		//$magazines = DB::select('id', 'title')->from('magazines')->execute()->as_array();
-		//4. ORMパッケージ
-		$magazines = Model_Magazine::find('all');//結果はモデルクラスのオブジェクトとして返ります。
-		//Debug::dump($magazines);
-
-		$menu["magazines"] = $magazines;
-		$this->template->menu = \View::forge('layouts/menu',$menu);
-
-		$content['article'] = '記事です';
+		$content['article'] = 'TOPページです';
 		$this->template->content = \View::forge('index',$content);
-		
-		$this->template->menufooter = \View::forge('layouts/menufooter',$menu);
-		
 	}
 
 }

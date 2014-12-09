@@ -3,9 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
-	<?php echo Asset::css('bootstrap.css'); ?>
-	<link rel='stylesheet' href='js/lib/bootstrap/css/bootstrap.min.css'/>
-	
+	<?php echo Asset::css($css); ?>
+	<?php echo Asset::js($js)?>	
 	<style>
 		body { margin: 40px; }
 	</style>

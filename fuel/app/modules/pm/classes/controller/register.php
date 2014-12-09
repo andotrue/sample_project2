@@ -2,7 +2,7 @@
 namespace pm;
 require_once realpath(__DIR__.'/common.php');
 
- class Controller_Apply extends \Controller_Template
+ class Controller_Register extends \Controller_Template
 {
 	public $template = 'layouts/template';
 	/*
@@ -10,6 +10,9 @@ require_once realpath(__DIR__.'/common.php');
 	 */	public function before()
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
+
+		$this->template->js=array('jquery.validationEngine.js','jquery.validationEngine-ja.js');
+		$this->template->css=array('validationEngine.jquery.css');
 		$common = new Common();
 		$common->common_views($this->template);
 	}
@@ -25,10 +28,10 @@ require_once realpath(__DIR__.'/common.php');
 	}
 	
 	public function action_index() {
-		$this->template->title = "懸賞に応募｜パズルメイト";
+		$this->template->title = "会員登録｜パズルメイト";
 
 		$content['article'] = "";
-		$this->template->content = \View::forge('apply',$content);
+		$this->template->content = \View::forge('register',$content);
 	}
 
 }

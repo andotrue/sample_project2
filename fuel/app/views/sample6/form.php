@@ -6,6 +6,7 @@
 <title><?=$title?></title>
 <?php echo Asset::css($css)?>
 <?php echo Asset::js($js)?>
+</head>
 <body>
 	<div data-role="page" id="page1" data-theme="c">
 		 <div data-role="header" data-theme="c">

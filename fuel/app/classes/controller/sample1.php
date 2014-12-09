@@ -83,6 +83,8 @@
 	 	if ($_POST)
 	 	{
 	 		// Authのインスタンス化
+	 		//config/auth.php ファイルのキー"driver"でロードする Login ドライバを設定。
+	 		//最初のドライバが Auth::instance() のデフォルト返り値にもなります。 
 	 		$auth = Auth::instance();
 	 		// 資格情報の確認
 	 		if ($auth->login($_POST['username'],$_POST['password']))
