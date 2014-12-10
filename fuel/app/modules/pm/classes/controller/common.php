@@ -9,10 +9,13 @@ Class common{
 	public function common_views($template){
 				
 		$template->js = isset($template->js)? $template->js : array(); 
-		array_push($template->js, 'jquery.min.js','jquery.mobile.min.js');
+		array_unshift($template->js, 'jquery.min.js');
+
+		$template->js2 = isset($template->js2)? $template->js2 : array(); 
+		array_unshift($template->js2, '');
 
 		$template->css = isset($template->css)? $template->css : array(); 
-		array_push($template->css, 'bootstrap.css','pm/common.css');
+		array_unshift($template->css, 'bootstrap.css','pm/common.css');
 
 		//ヘッダー表示
 		//header.phpをテンプレートの$headerとbindさせる。

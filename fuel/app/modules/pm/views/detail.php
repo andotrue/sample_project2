@@ -3,7 +3,18 @@
 	<div class="row">
 		<?/****画像****/ ?>	
 		<div class="col-sm-8" style="background:white; border:0px solid">
-		<?php echo Asset::img('pmtest1/magazine/'.$article['id'].'.jpg', array('width'=>'', 'height'=>'', 'alt'=>$article['title'], 'class'=>'img-responsive img-rounded')); ?>
+		<?php echo Asset::img('pmtest1/magazine/'.$article['id'].'.jpg', 
+							array(
+								'width'=>'100%', 
+								'height'=>'', 
+								'title'=>$article['title'],
+								'data-captioner-start-closed' => "false",
+								'role'=>"caption",
+								'data-captioner-type'=>"animated",
+								'alt'=>$article['discription'],
+								'class'=>'img-responsive img-rounded'
+							));
+		 ?>
 		</div>
 		<?/****説明文****/ ?>	
 		<div class="col-sm-4" style="background:white; border:1px solid; text-align:center; font-size:small;">

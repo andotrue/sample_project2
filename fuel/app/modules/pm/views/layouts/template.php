@@ -5,9 +5,6 @@
 	<title><?php echo $title; ?></title>
 	<?php echo Asset::css($css); ?>
 	<?php echo Asset::js($js)?>	
-	<style>
-		body { margin: 40px; }
-	</style>
 </head>
 <body>
 
@@ -65,5 +62,8 @@
 	<?php echo $footer; ?>
 		
 </div>
+
+<?php echo Asset::js($js2)?>	
+
 </body>
 </html>

@@ -10,6 +10,9 @@ require_once realpath(__DIR__.'/common.php');
 	 */	public function before()
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
+
+		$this->template->js=array('CaptionerJs.min.js');
+		$this->template->css=array('CaptionerJs.min.css');
 		$common = new Common();
 		$common->common_views($this->template);
 	}

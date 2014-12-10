@@ -11,8 +11,19 @@ require_once realpath(__DIR__.'/common.php');
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
 
-		$this->template->js=array('jquery.validationEngine.js','jquery.validationEngine-ja.js');
-		$this->template->css=array('validationEngine.jquery.css');
+		$this->template->js=array(
+								'jquery.validationEngine.js',
+								'jquery.validationEngine-ja.js',
+							);
+		$this->template->js2=array(
+								'FlowupLabels/jquery.FlowupLabels.js',
+								'FlowupLabels/main.js',
+							);
+		$this->template->css=array(
+								'validationEngine.jquery.css',
+								'FlowupLabels/jquery.FlowupLabels.css',
+								'FlowupLabels/main.css',
+							);
 		$common = new Common();
 		$common->common_views($this->template);
 	}
