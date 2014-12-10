@@ -14,4 +14,7 @@
  'numeric_min' => '『:label』は『:param:1』以上の値でなければなりません',
  'numeric_max' => '『:label』は『:param:1』以下の値でなければなりません',
  'valid_string' => '『:label』は検証文字ルールの『:rule』に適合していません',
+ 
+ //独自ルール
+ 'not_tab_and_newline'=>':lavel 欄にはタブや改行コードを含めないでください。',//add 20141210 by ando
  );

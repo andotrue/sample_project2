@@ -1,7 +1,7 @@
 <?php
 namespace bookForm;
 
-class Controller_bookForm extends \Controller_Template
+class Controller_bookForm extends Controller_Public
 {
 	public function action_index(){
 		$this->template->title = 'コンタクトフォーム';
@@ -16,10 +16,12 @@ class Controller_bookForm extends \Controller_Template
 		$val->add('name','名前')
 			->add_rule('trim')
 			->add_rule('required')
+			->add_rule('no_tab_and_newline')	//add 20141210 by ando
 			->add_rule('max_length',50);
 		$val->add('email','メールアドレス')
 			->add_rule('trim')
 			->add_rule('required')
+			->add_rule('no_tab_and_newline')	//add 20141210 by ando
 			->add_rule('max_length',100)
 			->add_rule('valid_email');
 		$val->add('comment','コメント')
@@ -31,7 +33,8 @@ class Controller_bookForm extends \Controller_Template
 	
 	public function action_confirm()
 	{
-		$val = $this->forge_validation();
+		//$val = $this->forge_validation();
+		$val = $this->forge_validation()->add_callable('MyValidationRules');//add 20141210 by ando
 		
 		if($val->run()){
 			$data['input'] = $val->validated();
@@ -53,7 +56,8 @@ class Controller_bookForm extends \Controller_Template
 			throw new \HttpInvalidInputException('ページ遷移が正しくありません');
 		}
 		
-		$val = $this->forge_validation();
+		//$val = $this->forge_validation();
+		$val = $this->forge_validation()->add_callable('MyValidationRules');//add 20141210 by ando
 		
 		if( ! $val->run())
 		{
