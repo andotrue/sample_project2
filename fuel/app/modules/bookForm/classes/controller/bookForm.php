@@ -8,6 +8,47 @@ class Controller_bookForm extends Controller_Public
 		$this->template->content = \View::forge('form/index');
 	}
 	
+	/*
+	 * Fieldsetクラスの使用
+	 */
+	public function action_index2(){
+		$form = $this->forge_form();
+		
+		if(\Input::method() === 'POST')
+		{
+			$form->repopulate();
+		}
+		
+		$this->template->title = 'コンタクトフォーム';
+		$this->template->content = \View::forge('form/index2');
+		$this->template->content->set_safe('html_form', $form->build('form/confirm'));
+	}
+
+	public function forge_form()
+	{
+		$form = \Fieldset::forge();
+		
+		$form->add('name','名前')
+			->add_rule('trim')
+			->add_rule('required')
+			->add_rule('no_tab_and_newline')	//add 20141210 by ando
+			->add_rule('max_length',50);
+		$form->add('email','メールアドレス')
+			->add_rule('trim')
+			->add_rule('required')
+			->add_rule('no_tab_and_newline')	//add 20141210 by ando
+			->add_rule('max_length',100)
+			->add_rule('valid_email');
+		$form->add('comment','コメント',
+					array('type'=>'textarea','cols'=>70,'rows'=>6))
+			->add_rule('required')
+			->add_rule('max_length', 400);
+		
+		$form->add('submit', '', array('type'=>'submit', 'value'=>'確認'));
+		
+		return $form;
+	}
+	
 	//検証ルール
 	public function forge_validation()
 	{
@@ -130,4 +171,5 @@ END;
 		
 		$email->send();
 	}
+	
 }
