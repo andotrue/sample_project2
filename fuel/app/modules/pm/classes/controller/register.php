@@ -40,7 +40,57 @@ namespace pm;
 		$this->template->title = "会員登録｜パズルメイト";
 
 		$content['article'] = "";
-		$this->template->content = \View::forge('register',$content);
+		$this->template->content = \View::forge('register/index',$content);
 	}
 
+	public function action_confirm()
+	{
+		\Log::debug(__METHOD__ . "/" . __LINE__);
+		$this->template->title = "会員登録｜パズルメイト";
+		$to=\Input::post('name');
+		\Debug::dump($_POST);
+		\Log::debug(__METHOD__ . "/" . __LINE__);
+		
+		//$val = $this->forge_validation();
+		$val = $this->forge_validation()->add_callable('MyValidationRules');
+		\Log::debug(__METHOD__ . "/" . __LINE__);
+		
+		if($val->run()){
+		\Log::debug(__METHOD__ . "/" . __LINE__);
+			$data['input'] = $val->validated();
+			$this->template->title = 'コンタクトフォーム: 確認';
+			$this->template->content = \View::forge('register/confirm', $data);
+		}
+		else{
+		\Log::debug(__METHOD__ . "/" . __LINE__);
+			$this->template->title = 'コンタクトフォーム: エラー';
+			$this->template->content = \View::forge('register/index');
+			$this->template->content->set_safe('html_error', $val->show_errors());
+		}
+	}
+
+	/*
+	 *検証ルール
+	 */
+	public function forge_validation()
+	{
+		$val = \Validation::forge();
+	
+		$val->add('name','名前')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')	//add 20141210 by ando
+		->add_rule('max_length',50);
+		$val->add('email','メールアドレス')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')	//add 20141210 by ando
+		->add_rule('max_length',100)
+		->add_rule('valid_email');
+	
+		return $val;
+	}
+	
+	
+	
 }

@@ -16,5 +16,5 @@
  'valid_string' => '『:label』は検証文字ルールの『:rule』に適合していません',
  
  //独自ルール
- 'not_tab_and_newline'=>':lavel 欄にはタブや改行コードを含めないでください。',//add 20141210 by ando
+ 'no_tab_and_newline'=>':lavel 欄にはタブや改行コードを含めないでください。',//add 20141210 by ando
  );
