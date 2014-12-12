@@ -25,10 +25,10 @@
 
 		 	 //jqueryのexvalidationで簡単バリデーション
 			 //'css'=>array('jquery.mobile.min.css','exvalidation.css'),
-		 	 'js'=>array('jquery.min.js','jquery.mobile.min.js','exvalidation.min.js','exchecker-ja.min.js'),
+		 	 'js'=>array('jquery.min.js','jquery.mobile.min.js','exvalidation/exvalidation.min.js','exvalidation/exchecker-ja.min.js'),
 
 		 	 //jqueryのexvalidationで簡単バリデーション & jquerymobileのテーマローダーで簡単テーマ作成
-		 	 'css'=>array('thema-sample.min.css','jquery.mobile.structure.min.css','exvalidation.css'),
+		 	 'css'=>array('jquery-mobile-theme/thema-sample.min.css','jquery.mobile.structure.min.css','exvalidation/exvalidation.css'),
 
 		 );
 		 $view=View::forge('sample6/form',$data);

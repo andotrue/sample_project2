@@ -4,8 +4,23 @@
 		<!form id='formBody' class='FlowupLabels'>
 		<form name="form1" id="form1" action="" role="form" class='FlowupLabels'>
 			<div class='fl_wrap'>
-				<label class='fl_label' for='rf_name'>Name:</label>
-				<input class='fl_input validate[required]' type='text' id='rf_name' />
+				<label class='fl_label' for='name'>お名前（必須）:</label>
+				<input class='fl_input validate[required]' type='text' id='name' style="width:80%;" />
+			</div>
+
+			<div class='fl_wrap'>
+				<label class='fl_label' for='furigana'>フリガナ（必須）:</label>
+				<input class='fl_input validate[required]' type='text' id='furigana' style="width:80%;" />
+			</div>
+
+			<div class='fl_wrap'>
+				<label class='fl_label' for='furigana'>生年月日（必須）:</label>
+				<input class='fl_input validate[required]' type='text' id='birthdate2' style="width:80%;" />
+			</div>
+
+			<div class="form-group" style="margin: 0px 105px;">
+				<label for="birthdate">生年月日</label>
+				<input type="date" class="form-control validate[required,custom[date]] text-input" style="width:80%" id="birthdate" placeholder="1976/06/19">
 			</div>
 
 			<div class='fl_wrap'>
@@ -29,6 +44,7 @@
 		</form>
 	</div>
 
+	<!-- 
 	<div class="container">
 		<form name="form1" id="form1" action="" role="form">
 			<div class="form-group">
@@ -60,8 +76,8 @@
 			</div>
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
-		<br><br>
 	</div>
+	 -->
 	
 	<script>
 	$(function(){

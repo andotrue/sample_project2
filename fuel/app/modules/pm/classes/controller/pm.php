@@ -1,17 +1,30 @@
 <?php
 namespace pm;
-require_once realpath(__DIR__.'/common.php');
+//require_once realpath(__DIR__.'/common.php');
 
- class Controller_Pm extends \Controller_Template
+ class Controller_Pm extends Controller_Public
 {
-	public $template = 'layouts/template';
+	//public $template = 'layouts/template';
 	/*
 	 * 
-	 */	public function before()
+	 */	
+	public function before()
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
+
+		/*
+		$this->template->js=array(
+								'',
+							);
+		$this->template->js2=array(
+								'',
+							);
+		$this->template->css=array(
+								'',
+							);
 		$common = new Common();
 		$common->common_views($this->template);
+		*/
 	}
 	
 	/*

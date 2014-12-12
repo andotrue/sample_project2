@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
 	<?php echo Asset::css($css); ?>
+	<link type="text/css" rel="stylesheet" href="http://fuel.localcentos65/sample_project2/assets/css/FlowupLabels/jquery.FlowupLabels.css" />
 	<?php echo Asset::js($js)?>	
 </head>
 <body>

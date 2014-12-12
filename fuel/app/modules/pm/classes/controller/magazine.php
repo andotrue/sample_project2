@@ -2,7 +2,7 @@
 namespace pm;
 require_once realpath(__DIR__.'/common.php');
 
- class Controller_Magazine extends \Controller_Template
+ class Controller_Magazine extends Controller_Public
 {
 	public $template = 'layouts/template';
 	/*
@@ -10,8 +10,6 @@ require_once realpath(__DIR__.'/common.php');
 	 */	public function before()
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
-		$common = new Common();
-		$common->common_views($this->template);
 	}
 	
 	/*

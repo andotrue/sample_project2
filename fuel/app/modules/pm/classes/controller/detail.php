@@ -1,8 +1,7 @@
 <?php
 namespace pm;
-require_once realpath(__DIR__.'/common.php');
 
- class Controller_Detail extends \Controller_Template
+ class Controller_Detail extends Controller_Public
 {
 	public $template = 'layouts/template';
 	/*
@@ -11,10 +10,13 @@ require_once realpath(__DIR__.'/common.php');
 	{
 		parent::before();// この行がないと、テンプレートが動作しません!
 
-		$this->template->js=array('CaptionerJs.min.js');
-		$this->template->css=array('CaptionerJs.min.css');
-		$common = new Common();
-		$common->common_views($this->template);
+		$this->template->js = isset($this->template->js)? $this->template->js : array();
+		array_push($this->template->js, 'CaptionerJs/CaptionerJs.min.js'
+		);
+		
+		$this->template->css = isset($this->template->css)? $this->template->css : array();
+		array_push($this->template->css, 'CaptionerJs/CaptionerJs.min.css'
+		);
 	}
 	
 	/*
