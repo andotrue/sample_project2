@@ -11,7 +11,7 @@ class Test_Functional_Form extends FunctionalTestCase
 	{
 		try
 		{
-			static::$crawler = static::$client->request('GET',static::open('bookForm/index/'));
+			static::$crawler = static::$client->request('GET',static::open('bookForm/index2/'));
 		}
 		catch(Exception $e)
 		{
