@@ -1,9 +1,55 @@
+<script src="http://ajaxzip3.googlecode.com/svn/trunk/ajaxzip3/ajaxzip3.js" charset="UTF-8"></script>
+
 <div>
 <div style="border-radius: 5px 5px 0px 0px; background-color: #00AEEF; text-align:center; color:white; border:1px solid">
 会員登録</div>
 <p style="border-radius: 0px 0px 5px 5px; background-color: white; text-align:center; font-size:11px; color:black; border:1px solid; margin-bottom:0;">
 ※一度会員登録すれば、次回からはメールアドレスとパスワードを入力するだけで応募ができます。</p>
 </div>
+
+<script type="text/javascript">
+$(function(){
+
+    $("input").change( function() {
+        var cls = $(this).attr("class");
+
+        if ( cls.match(/bd/)  ) {
+            birthday_ymd = $('#birthdayYMD').val();
+            retBirth = birthday_ymd;
+            alert(retBirth);
+            y = parseInt(birthday_ymd.substr(0,4), 10);
+            m = parseInt(birthday_ymd.substr(4,2), 10);
+            d = parseInt(birthday_ymd.substr(6,2), 10);
+        }
+
+        myNow = new Date();    // 現在
+        myBirth = new Date( 1970, 0, d );    // 基準日
+        myBirth.setTime( myNow.getTime() - myBirth.getTime() );
+
+        // 求めた年月日から基準日を引く
+        myYear  = myBirth.getUTCFullYear() - y;
+        myMonth = myBirth.getUTCMonth() - ( m - 1 );
+
+        // 月がマイナスなので年から繰り下げ
+        if( myMonth < 0 ){
+            myYear --;
+            myMonth += 12;
+        }
+
+        myDate = myBirth.getUTCDate();
+
+        if( cls.match(/bd/) ){
+            //$('#nowAge').text( myYear+"才 "+myMonth+"ヶ月 "+myDate+"日目" );
+            $('#age').value( myYear );
+		}
+    });
+});
+</script>
+
+生年月日:
+<input type="text" name="birthdayYMD" value="" size="15" id="birthdayYMD" class="bd">&nbsp;&nbsp;■現年齢：<span id="nowAge"></span>
+
+
 
 <?php if(isset($html_error)): ?>
 <?php echo $html_error; ?>
@@ -48,13 +94,13 @@
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='zipcode'>郵便番号 <span style="font-size:small;color:red">※必須　 例)1400002</span>:</label>
-				<input name='zipcode' value='<?=Input::post('zipcode')?>' class='fl_input validate[required,custom[number],minSize[7]]' type='text' id='zipcode' style="width:100%;" size=7 maxlength=7 placeholder=""/>
-			</div>
+<input name="zipcode" value='<?=Input::post('zipcode')?>' class='fl_input validate[required,custom[number],minSize[7]]' type='text' id='zipcode' style="width:100%;" size=7 maxlength=7 onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
+				</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='address'>住所 <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='address' value='<?=Input::post('address')?>' class='fl_input validate[required]' type='text' id='address' style="width:100%;" placeholder=""/>
-			</div>
+<input name='address' value='<?=Input::post('address')?>' class='fl_input validate[required]' type='text' id='address' style="width:100%;">
+				</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='biulding'>建物 :</label>
