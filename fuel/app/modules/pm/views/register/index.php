@@ -1,4 +1,10 @@
-<p style="border-radius: 3px 3px; background-color: #00AEEF; text-align:center; color:white; border:1px solid">会員登録</p>
+<div>
+<div style="border-radius: 5px 5px 0px 0px; background-color: #00AEEF; text-align:center; color:white; border:1px solid">
+会員登録</div>
+<p style="border-radius: 0px 0px 5px 5px; background-color: white; text-align:center; font-size:11px; color:black; border:1px solid; margin-bottom:0;">
+※一度会員登録すれば、次回からはメールアドレスとパスワードを入力するだけで応募ができます。</p>
+</div>
+
 <?php if(isset($html_error)): ?>
 <?php echo $html_error; ?>
 <?php endif; ?>
@@ -28,51 +34,51 @@
 			<div style="margin: 10px 105px 0px;" class="form-group">
 				<label for='gender'>性別 <span style="font-size:small;color:red">※必須</span>:</label>
 					<label class="radio-inline">
-						<input class="validate[required]" type="radio" name="gender" id="inlineRadio1" value="male"> 男
+						<input name="gender" class="validate[required]" type="radio" id="inlineRadio1" value="male"> 男
 					</label>
 					<label class="radio-inline">
-					 	<input class="validate[required]" type="radio" name="gender" id="inlineRadio2" value="female"> 女
+					 	<input name="gender" class="validate[required]" type="radio" id="inlineRadio2" value="female"> 女
 					</label>
 			</div>
 
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='age'>年齢 <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='age' class='fl_input validate[required,custom[number]]' type='text' id='age' style="width:100%;" size=2 maxlength=2 placeholder=""/>
+				<input name='age' value='<?=Input::post('age')?>' class='fl_input validate[required,custom[number]]' type='text' id='age' style="width:100%;" size=2 maxlength=2 placeholder=""/>
 			</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='zipcode'>郵便番号 <span style="font-size:small;color:red">※必須　 例)1400002</span>:</label>
-				<input name='zipcode' class='fl_input validate[required,custom[number],minSize[7]]' type='text' id='zipcode' style="width:100%;" size=7 maxlength=7 placeholder=""/>
+				<input name='zipcode' value='<?=Input::post('zipcode')?>' class='fl_input validate[required,custom[number],minSize[7]]' type='text' id='zipcode' style="width:100%;" size=7 maxlength=7 placeholder=""/>
 			</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='address'>住所 <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='address' class='fl_input validate[required]' type='text' id='address' style="width:100%;" placeholder=""/>
+				<input name='address' value='<?=Input::post('address')?>' class='fl_input validate[required]' type='text' id='address' style="width:100%;" placeholder=""/>
 			</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='biulding'>建物 :</label>
-				<input name='biulding' class='fl_input' type='text' id='building' style="width:100%;" placeholder=""/>
+				<input name='building' value='<?=Input::post('building')?>' class='fl_input' type='text' id='building' style="width:100%;" placeholder=""/>
 			</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='tel'>TEL <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='tel' class='fl_input validate[required,custom[number],minSize[10],maxSize[11]]' type='text' id='tel' style="width:100%;" size=11 maxlength=11 placeholder=""/>
+				<input name='tel' value='<?=Input::post('tel')?>' class='fl_input validate[required,custom[number],minSize[10],maxSize[11]]' type='text' id='tel' style="width:100%;" size=11 maxlength=11 placeholder=""/>
 			</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='email'>Eメール <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='email' class='fl_input validate[required,custom[email]]' type='email' id='email' style="width:100%;" placeholder=""/>
+				<input name='email' value='<?=Input::post('email')?>' class='fl_input validate[required,custom[email]]' type='email' id='email' style="width:100%;" placeholder=""/>
 			</div>
 			
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='password'>パスワード <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='password' class='fl_input validate[required]' type='password' id='password' style="width:100%;" />
+				<input name='password' value='' class='fl_input validate[required]' type='password' id='password' style="width:100%;" />
 			</div>
 
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='passwordrm'>パスワード（確認） <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='passwordrm' class='fl_input validate[required],equals[password]' type='password' id='passwordrm' style="width:100%;" />
+				<input name='passwordrm' value='' class='fl_input validate[required],equals[password]' type='password' id='passwordrm' style="width:100%;" />
 			</div>
 			
 			<p style="margin: 10px;">

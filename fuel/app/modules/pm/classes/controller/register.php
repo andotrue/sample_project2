@@ -89,10 +89,42 @@ namespace pm;
 		->add_rule('no_tab_and_newline')
 		->add_rule('max_length',8);
 		//性別
+		$val->add('gender','性別')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',8);
+		//年齢
+		$val->add('age','年齢')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',3);
 		//郵便番号
+		$val->add('zipcode','郵便番号')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('min_length',7)
+		->add_rule('max_length',7);
 		//住所
+		$val->add('address','住所')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',256);
 		//建物
+		$val->add('building','建物')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',256);
 		//TEL
+		$val->add('tel','TEL')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',11);
 		//Eメール
 		$val->add('email','メールアドレス')
 		->add_rule('trim')
