@@ -61,5 +61,3 @@
 	</IfModule>
 
 </IfModule>
-
-setEnv FUEL_ENV test

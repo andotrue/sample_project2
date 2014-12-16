@@ -2,6 +2,7 @@
 
 /**
  * contact Form Functional Tests
+ * 		[command]# oil test --group=Functional
  * 
  * @group Functional
  */

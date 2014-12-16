@@ -45,25 +45,19 @@ namespace pm;
 
 	public function action_confirm()
 	{
-		\Log::debug(__METHOD__ . "/" . __LINE__);
 		$this->template->title = "会員登録｜パズルメイト";
-		$to=\Input::post('name');
-		\Debug::dump($_POST);
-		\Log::debug(__METHOD__ . "/" . __LINE__);
+		//\Debug::dump($_POST);
 		
 		//$val = $this->forge_validation();
 		$val = $this->forge_validation()->add_callable('MyValidationRules');
-		\Log::debug(__METHOD__ . "/" . __LINE__);
 		
 		if($val->run()){
-		\Log::debug(__METHOD__ . "/" . __LINE__);
 			$data['input'] = $val->validated();
-			$this->template->title = 'コンタクトフォーム: 確認';
+			$this->template->title = '会員登録｜パズルメイト: 確認';
 			$this->template->content = \View::forge('register/confirm', $data);
 		}
 		else{
-		\Log::debug(__METHOD__ . "/" . __LINE__);
-			$this->template->title = 'コンタクトフォーム: エラー';
+			$this->template->title = '会員登録｜パズルメイト: エラー';
 			$this->template->content = \View::forge('register/index');
 			$this->template->content->set_safe('html_error', $val->show_errors());
 		}
@@ -75,18 +69,38 @@ namespace pm;
 	public function forge_validation()
 	{
 		$val = \Validation::forge();
-	
-		$val->add('name','名前')
+		
+		//お名前
+		$val->add('name','お名前')
 		->add_rule('trim')
 		->add_rule('required')
-		->add_rule('no_tab_and_newline')	//add 20141210 by ando
+		->add_rule('no_tab_and_newline')
 		->add_rule('max_length',50);
+		//フリガナ
+		$val->add('furigana','フリガナ')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',50);
+		//生年月日
+		$val->add('birthdate','生年月日')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',8);
+		//性別
+		//郵便番号
+		//住所
+		//建物
+		//TEL
+		//Eメール
 		$val->add('email','メールアドレス')
 		->add_rule('trim')
 		->add_rule('required')
-		->add_rule('no_tab_and_newline')	//add 20141210 by ando
+		->add_rule('no_tab_and_newline')
 		->add_rule('max_length',100)
 		->add_rule('valid_email');
+		//パスワード
 	
 		return $val;
 	}

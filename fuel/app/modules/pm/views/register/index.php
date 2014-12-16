@@ -3,21 +3,20 @@
 <?php echo $html_error; ?>
 <?php endif; ?>
 	<div id='container'>
-		<!form id='formBody' class='FlowupLabels'>
 		<form method="post" name="form1" id="form1" action="confirm" role="form" class='FlowupLabels'>
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='name'>お名前 <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='name' class='fl_input validate[required]' type='text' id='name' style="width:100%;" />
+				<input name='name' value='<?=Input::post('name')?>' class='fl_input validate[required]' type='text' id='name' style="width:100%;" />
 			</div>
 
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='furigana'>フリガナ <span style="font-size:small;color:red">※必須</span>:</label>
-				<input name='furigana' class='fl_input validate[required]' type='text' id='furigana' style="width:100%;" />
+				<input name='furigana' value='<?=Input::post('furigana')?>' class='fl_input validate[required]' type='text' id='furigana' style="width:100%;" />
 			</div>
 
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='birthdate'>生年月日 <span style="font-size:small;color:red">※必須　 例)19760619</span>:</label>
-				<input name='birthdate' class='fl_input validate[required],custom[number],minSize[8]' type='text' id='birthdate' style="width:100%;" size=8 maxlength=8 />
+				<input name='birthdate' value='<?=Input::post('birthdate')?>' class='fl_input validate[required],custom[number],minSize[8]' type='text' id='birthdate' style="width:100%;" size=8 maxlength=8 />
 			</div>
 			
 <!-- 
