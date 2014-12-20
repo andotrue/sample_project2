@@ -20,11 +20,13 @@ class Model_Mail extends \Model
 	//メールの作成
 	protected function build_mail($post)
 	{
+		Config::load('contact_form', true);//設定ファイルをロードする
+		
 		$data['from'] = $post['email'];
 		$data['from_name'] = $post['name'];
-		$data['to'] = 'andotrue@gmail.com';
-		$data['to_name'] = '管理者';
-		$data['subject'] = 'コンタクトフォーム';
+		$data['to'] = Config::get('Contact_form.admin_email');
+		$data['to_name'] = Config::get('Contact_form.admin_name');
+		$data['subject'] = Config::get('Contact_form.admin_subject');
 	
 		$ip = \Input::ip();
 		$agent = \Input::user_agent();

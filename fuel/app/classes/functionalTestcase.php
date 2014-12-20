@@ -5,8 +5,8 @@ use Goutte\Client;
 abstract class FunctionalTestCase extends \Fuel\Core\TestCase
 {
 	//サイトのURLを設定
-	//const BASE_URL = 'http://192.168.59.101/fuel/sample_project2/';//homemac
-	const BASE_URL = 'http://192.168.56.101/fuel/sample_project2/';//pc
+	const BASE_URL = 'http://fuel.localcentos65/sample_project2/';//homemac
+	//const BASE_URL = 'http://192.168.56.101/fuel/sample_project2/';//pc
 		
 	//静的プロパティ
 	protected static $client; //Clientオブジェクト　GoutteのClientオブジェクト

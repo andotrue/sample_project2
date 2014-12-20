@@ -68,11 +68,13 @@ class Controller_bookForm extends Controller_Public
 		}
 		
 		$post = $val->validated();
-		$data = $this->build_mail($post);
+//		$data = $this->build_mail($post);
 		
 		//メールの送信
 		try{
-			$this->sendmail($data);
+//			$this->sendmail($data);
+			$mail = new \Model_Mail();//Mailモデルをインスタンス化
+			$mail->send($post);
 			$this->template->title = ('コンタクトフォーム:　送信完了');
 			$this->template->content = \View::forge('form/send');
 			return;
@@ -184,11 +186,13 @@ class Controller_bookForm extends Controller_Public
 		}
 	
 		$post = $val->validated();
-		$data = $this->build_mail($post);
+//		$data = $this->build_mail($post);
 	
 		//メールの送信
 		try{
-			$this->sendmail($data);
+//			$this->sendmail($data);
+			$mail = new \Model_Mail();//Mailモデルをインスタンス化
+			$mail->send($post);
 			$this->template->title = ('コンタクトフォーム:　送信完了');
 			$this->template->content = \View::forge('form/send2');
 			return;
@@ -209,44 +213,5 @@ class Controller_bookForm extends Controller_Public
 		$this->template->content = \View;;forge('form/index2');
 		$this->template->content->set_safe('html_error', $html_error);
 		$this->template->content->set_safe('html_form',$form->build('bookForm/confirm2'));
-	}
-	
-	public function build_mail($post)
-	{
-		$data['from'] = $post['email'];
-		$data['from_name'] = $post['name'];
-		$data['to'] = 'andotrue@gmail.com';
-		$data['to_name'] = '管理者';
-		$data['subject'] = 'コンタクトフォーム';
-		
-		$ip = \Input::ip();
-		$agent = \Input::user_agent();
-		
-		$data['body'] = <<< END
----------------------------------------
-名前:{$post['name']}
-メールアドレス:{$post['email']}
-IPアドレス:$ip
-ブラウザ:$agent
----------------------------------------
-コメント:
-{$post['comment']}
-END;
-
-		return $data;
-	}
-	
-	public function sendmail($data)
-	{
-		\Package::load('email');
-		
-		$email = \Email::forge();
-		$email->from($data['from'], $data['from_name']);
-		$email->to($data['to'], $data['to_name']);
-		$email->subject($data['subject']);
-		$email->body($data['body']);
-		
-		$email->send();
-	}
-	
+	}	
 }
