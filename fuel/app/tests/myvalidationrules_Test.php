@@ -2,6 +2,8 @@
 
 /**
  * MyValidationRules Tests
+ * 		[command]# oil test --group=App
+ * 					@groupアノテーションでAppを指定しているテストファイルだけ実行される
  * 
  * @group App
  */

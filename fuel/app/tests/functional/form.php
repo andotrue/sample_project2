@@ -33,7 +33,7 @@ class Test_Functional_Form extends FunctionalTestCase
 		$this->assertEquals(200, static::$client->getResponse()->getStatus());
 	}
 	
-	public function testg_レスポンスヘッダのContentTypeを確認()
+	public function test_レスポンスヘッダのContentTypeを確認()
 	{
 		$test = static::$client->getResponse()->getHeader('Content-Type');
 		$expected = 'text/html; charset=UTF-8';
@@ -166,7 +166,7 @@ class Test_Functional_Form extends FunctionalTestCase
 		static::$post = array(
 				'name' => 'foo',
 				'email' => 'foo@example.jp',
-				'comment' => '正常データを確認ページに送信。'."\n".'正常データを確認ページに送信。',
+				'comment' => '正常データを確認ページに送信。'."\n".'正常データを確認ページに送信。'."\n".'『'.__METHOD__.'』より送信',
 		);
 		static::$crawler = static::$client->submit($form, static::$post);
 			

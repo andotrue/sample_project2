@@ -12,7 +12,7 @@ class Model_Mail_Test extends TestCase
 	public function setUp()
 	{
 		$this->post = array(
-			'email' => 'foo@example.com',
+			'email' => 'andotrue@gmail.com',
 			'name' => '送信者',
 			'comment' => 'メール送信のテスト',
 		);
@@ -50,7 +50,7 @@ class Model_Mail_Test extends TestCase
 		
 		//From: 送信者<foo@example.com>
 		//assertRegExp()メソッドにより正規表現での文字列一致をテストする場合は、正規表現の中でメタ文字が含まれる可能性のある部分をpreg_quote()関数でエスケープ処理する
-		$pattern = '/' . preg_quote('From: "=?UTF-8?B?6YCB5L+h6ICF?=" <foo@example.com>', '/') . '/u';
+		$pattern = '/' . preg_quote('From: "=?UTF-8?B?6YCB5L+h6ICF?=" <andotrue@gmail.com>', '/') . '/u';
 		$this->assertRegExp($pattern, $mail_data['additional_headers']);
 	}
 	
