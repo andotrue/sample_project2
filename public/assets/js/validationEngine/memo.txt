@@ -1,0 +1,5 @@
+【jQuery】フォームのリアルタイムエラーチェックはjQuery Validation Engineプラグインが簡単
+http://blog.shuffleee.com/1207/
+
+フォームの入力内容をリアルタイムにチェックするサンプル
+http://guide.withabout.net/guide/gp332/420327/form-validation.html

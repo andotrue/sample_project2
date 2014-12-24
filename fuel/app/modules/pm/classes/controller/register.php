@@ -12,6 +12,8 @@ namespace pm;
 		$this->template->js = isset($this->template->js)? $this->template->js : array();
 		array_push($this->template->js, 'validationEngine/jquery.validationEngine.js'
 											,'validationEngine/jquery.validationEngine-ja.js'
+//											,'ajaxzip3/ajaxzip3.js'
+											,'https://ajaxzip3.googlecode.com/svn/trunk/ajaxzip3/ajaxzip3-https.js'
 		);
 		
 		$this->template->js2 = isset($this->template->js2)? $this->template->js2 : array();
@@ -61,6 +63,86 @@ namespace pm;
 			$this->template->content = \View::forge('register/index');
 			$this->template->content->set_safe('html_error', $val->show_errors());
 		}
+	}
+
+	public function action_send()
+	{
+		$this->template->title = "会員登録｜パズルメイト";
+		//\Debug::dump($_POST);
+		//exit;
+		
+		//CSRF対策
+		if( ! \Security::check_token())
+		{
+			//throw new \HttpInvalidInputException('ページ遷移が正しくありません');
+			$this->template->title = '会員登録｜パズルメイト: エラー';
+			$this->template->content = \View::forge('register/index');
+			$this->template->content->set_safe('html_error', 'ページ遷移が正しくありません');
+		}
+		
+		$val = $this->forge_validation()->add_callable('MyValidationRules');//add 20141210 by ando
+		
+		if( ! $val->run())
+		{
+			$this->template->title = '会員登録｜パズルメイト';
+			$this->template->content = \View::forge('register/index');
+			$this->template->content->set_safe('html_error', $val->show_errors());
+			return;
+		}
+		else
+		{
+			$name = \Input::post('name');
+			$furigana = \Input::post('furigana');
+			$birthdate = \Input::post('birthdate');
+			$gender = \Input::post('gender');
+			$age = \Input::post('age');
+			$zipcode = \Input::post('zipcode');
+			$address = \Input::post('address');
+			$building = \Input::post('building');
+			$tel = \Input::post('tel');
+			$email = \Input::post('email');
+			$password = \Input::post('password');
+			
+			/*
+			$profile_fields = array(
+								'furigana'=>$furigana,
+								'birthdate'=>$birthdate,
+								'gender'=>$gender,
+								'age'=>$age,
+								'zipcode'=>$zipcode,
+								'address'=>$address,
+								'building'=>$building,
+								'tel'=>$tel,
+								);
+			
+			
+	 		// Authのインスタンス化
+	 		$auth = \Auth::instance();
+			// 新しいユーザーを作成
+			$auth->create_user($email,$password,$email,1,$profile_fields);
+			*/
+			
+	 		// Authのインスタンス化
+	 		$auth = \Auth::instance();
+			$data = array(
+						'username'=>$email,
+						'password'=>$auth->hash_password((string) $password),
+						'email'=>$email,
+						'furigana'=>$furigana,
+						'birthdate'=>$birthdate,
+						'gender'=>$gender,
+						'age'=>$age,
+						'zipcode'=>$zipcode,
+						'address'=>$address,
+						'building'=>$building,
+						'tel'=>$tel,
+						);
+			list($insert_id, $rows_affected) = \DB::insert('users')->set($data)->execute();
+		}
+		
+		$this->template->title = ('会員登録｜パズルメイト:　登録完了');
+		$this->template->content = \View::forge('register/send');
+		return;
 	}
 
 	/*
@@ -116,7 +198,6 @@ namespace pm;
 		//建物
 		$val->add('building','建物')
 		->add_rule('trim')
-		->add_rule('required')
 		->add_rule('no_tab_and_newline')
 		->add_rule('max_length',256);
 		//TEL
@@ -133,7 +214,18 @@ namespace pm;
 		->add_rule('max_length',100)
 		->add_rule('valid_email');
 		//パスワード
-	
+		$val->add('password','パスワード')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',10);
+		//パスワード(確認)
+		$val->add('passwordrm','パスワード（確認）')
+		->add_rule('trim')
+		->add_rule('required')
+		->add_rule('no_tab_and_newline')
+		->add_rule('max_length',10);
+		
 		return $val;
 	}
 	

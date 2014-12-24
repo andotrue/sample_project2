@@ -13,8 +13,9 @@ return array(
         4 => '005_create_articles',
         5 => '006_create_test',
         6 => '007_create_dvd',
-        7 => '007_create_dvds',
-        8 => '008_create_magazines',
+        7 => '008_create_magazines',
+        8 => '009_rename_table_users_to_users_bup',
+        9 => '010_create_users',
       ),
     ),
     'module' => 

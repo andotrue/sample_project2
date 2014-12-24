@@ -75,8 +75,9 @@ return array(
 	 *
 	 * These MUST include the trailing slash ('/')
 	 */
-	'url' => Config::get('base_url'),
-
+	//'url' => Config::get('base_url'),//20141224 comment out
+	'url' =>'/sample_project2/',//20141224 add by ando
+	
 	/**
 	 * Whether to append the assets last modified timestamp to the url.
 	 * This will aid in asset caching, and is recommended.  It will create

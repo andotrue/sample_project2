@@ -14,6 +14,7 @@
 			Uriクラス
 			<table class="table table-condensed table-bordered" style="font-size:small">
 				<tr><td>Uri::base()</td><td>[サイトURL]</td><td><?php echo Uri::base(); ?></td></tr>
+				<tr><td>Uri::create("pm/register/",array(),array(),true)</td><td>[URLを生成]</td><td><?php echo Uri::create("pm/register/",array(),array(),true); ?></td></tr>
 				<tr><td>Uri::current()</td><td>[現在表示されているページURL]</td><td><?php echo Uri::current(); ?></td></tr>
 				<tr><td>Uri::main()</td><td>[現在表示されているページURL]</td><td><?php echo Uri::main(); ?></td></tr>
 				<tr><td>Uri::string()</td><td>[現在表示されているページURL(ホストを入れない)]</td><td><?php echo Uri::string(); ?></td></tr>

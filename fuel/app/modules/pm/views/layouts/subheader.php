@@ -1,4 +1,4 @@
-<?=Html::anchor(Uri::base().Uri::segment(1).'/register/', "会員登録");?><br />
+<?=Html::anchor(Uri::create("pm/register/",array(),array(),true), "会員登録");?><br />
 会員情報はこちら<br />
 ログアウトはこちら
 <ul class="nav nav-tabs nav-justified">
