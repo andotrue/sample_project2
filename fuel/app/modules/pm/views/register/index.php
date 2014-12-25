@@ -1,3 +1,5 @@
+<?php //Debug::dump(Input::post('gender')); ?>
+
 <div>
 <div style="border-radius: 5px 5px 0px 0px; background-color: #00AEEF; text-align:center; color:white; border:1px solid">
 会員登録</div>
@@ -39,10 +41,10 @@
 			<div style="margin: 10px 105px 0px;" class="form-group">
 				<label for='gender'>性別 <span style="font-size:small;color:red">※必須</span>:</label>
 					<label class="radio-inline">
-						<input name="gender" class="validate[required]" type="radio" id="inlineRadio1" value="male"　<?php echo (Input::post('gender') === "male")? 'checked="checked"' : ""; ?>> 男
+						<input name="gender" class="validate[required]" type="radio" id="inlineRadio1" value="male"   <?= (Input::post('gender') === "male")? "checked" : ""; ?>> 男
 					</label>
 					<label class="radio-inline">
-					 	<input name="gender" class="validate[required]" type="radio" id="inlineRadio2" value="female" <?php echo (Input::post('gender') === "female")? 'checked="checked"' : ""; ?>> 女
+					 	<input name="gender" class="validate[required]" type="radio" id="inlineRadio2" value="female" <?= (Input::post('gender') === "female")? "checked" : ""; ?>> 女
 					</label>
 			</div>
 

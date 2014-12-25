@@ -40,16 +40,25 @@ namespace pm;
 	/*
 	 * http://fuelphp.jp/docs/1.7/general/controllers/template.html
 	 */
-	public function action_notemplate() {
+	public function action_notemplate() 
+	{
 		// Response オブジェクトが返されると、それが優先され、テンプレートなしのコンテンツが表示される
 		return new Response(\View::forge('index', $content));
 	}
 	
-	public function action_index() {
+	public function action_index() 
+	{
 		$this->template->title = "パズルメイト｜ (株)マガジン・マガジンのパズル総合サイト";
 
 		$content['article'] = 'TOPページです';
 		$this->template->content = \View::forge('index',$content);
 	}
 
+	public function action_logout()
+	{
+		//ログアウト
+		\Auth::logout();
+		//ログアウト画面の表示
+		\Response::redirect(\Uri::create("pm/",array(),array(),false));
+	}
 }

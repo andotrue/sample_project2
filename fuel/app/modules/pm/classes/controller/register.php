@@ -63,6 +63,17 @@ namespace pm;
 			$this->template->content = \View::forge('register/index');
 			$this->template->content->set_safe('html_error', $val->show_errors());
 		}
+		
+		//usernameの重複チェック
+		$email = \Input::post('email');
+		$same_users = \DB::select()->from('users')->where('username', $email)->execute();
+		if($same_users->count() > 0)
+		{
+			$this->template->title = '会員登録｜パズルメイト';
+			$this->template->content = \View::forge('register/index');
+			$this->template->content->set_safe('html_error', "既に登録されてるメールアドレスです。");
+			return;
+		}
 	}
 
 	public function action_send()
@@ -78,6 +89,7 @@ namespace pm;
 			$this->template->title = '会員登録｜パズルメイト: エラー';
 			$this->template->content = \View::forge('register/index');
 			$this->template->content->set_safe('html_error', 'ページ遷移が正しくありません');
+			return;
 		}
 		
 		$val = $this->forge_validation()->add_callable('MyValidationRules');//add 20141210 by ando
@@ -122,8 +134,17 @@ namespace pm;
 			$auth->create_user($email,$password,$email,1,$profile_fields);
 			*/
 			
-	 		// Authのインスタンス化
-	 		$auth = \Auth::instance();
+			//usernameの重複チェック
+			$same_users = \DB::select()->from('users')->where('username', $email)->execute();
+			if($same_users->count() > 0)
+			{
+				$this->template->title = '会員登録｜パズルメイト';
+				$this->template->content = \View::forge('register/index');
+				$this->template->content->set_safe('html_error', "既に登録されてるメールアドレスです。");
+				return;
+			}
+			//DB登録処理
+	 		$auth = \Auth::instance();// Authのインスタンス化
 			$data = array(
 						'username'=>$email,
 						'password'=>$auth->hash_password((string) $password),

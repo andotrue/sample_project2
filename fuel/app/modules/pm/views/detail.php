@@ -15,6 +15,20 @@
 								'class'=>'img-responsive img-rounded'
 							));
 		 ?>
+		 			<div class="grid">
+		 			<figure class="effect-julia">
+						<img src="/sample_project2/assets/img/pmtest1/magazine/1.jpg?1417660097" alt="img21"/>
+						<figcaption>
+							<h2>Passionate <span>Julia</span></h2>
+							<div>
+								<p>Julia dances in the deep dark</p>
+								<p>She loves the smell of the ocean</p>
+								<p>And dives into the morning light</p>
+							</div>
+							<a href="#">View more</a>
+						</figcaption>			
+					</figure>
+					</div>
 		</div>
 		<?/****説明文****/ ?>	
 		<div class="col-sm-4" style="background:white; border:1px solid; text-align:center; font-size:small;">

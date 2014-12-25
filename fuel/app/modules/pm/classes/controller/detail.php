@@ -16,7 +16,12 @@ namespace pm;
 		
 		$this->template->css = isset($this->template->css)? $this->template->css : array();
 		array_push($this->template->css, 'CaptionerJs/CaptionerJs.min.css'
+										//,'HoverEffectIdeas/css/normalize.css'
+										//,'HoverEffectIdeas/css/demo.css'
+										,'HoverEffectIdeas/css/set2.css'
+										//,'HoverEffectIdeas/fonts/font-awesome-4.2.0/css/font-awesome.min.css'
 		);
+
 	}
 	
 	/*

@@ -5,7 +5,7 @@
 	<title><?php echo $title; ?></title>
 	<?php echo Asset::css($css); ?>
 	<?php echo Asset::js($js)?>	
-</head>
+	</head>
 <body>
 
 <div class="container">
