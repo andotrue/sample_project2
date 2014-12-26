@@ -10,6 +10,7 @@
 			定数
 			<table class="table table-condensed table-bordered" style="font-size:small">
 				<tr><td>DOCROOT</td><td></td><td><?php echo DOCROOT; ?></td></tr>
+				<tr><td>MODULE_NAME</td><td></td><td><?php echo MODULE_NAME; ?></td></tr>
 			</table>
 			Uriクラス
 			<table class="table table-condensed table-bordered" style="font-size:small">

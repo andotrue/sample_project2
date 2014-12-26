@@ -15,20 +15,30 @@
 								'class'=>'img-responsive img-rounded'
 							));
 		 ?>
-		 			<div class="grid">
-		 			<figure class="effect-julia">
-						<img src="/sample_project2/assets/img/pmtest1/magazine/1.jpg?1417660097" alt="img21"/>
-						<figcaption>
-							<h2>Passionate <span>Julia</span></h2>
-							<div>
-								<p>Julia dances in the deep dark</p>
-								<p>She loves the smell of the ocean</p>
-								<p>And dives into the morning light</p>
-							</div>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-					</div>
+		 
+		<div class="grid">
+		<figure class="effect-julia" style="min-width:100%; max-width:100%; min-height:100%; max-height:100%; height:500px">
+		<?php echo Asset::img('pmtest1/magazine/'.$article['id'].'.jpg', 
+							array(
+								'width'=>'100%', 
+								'height'=>'', 
+								'title'=>$article['title'],
+								//'data-captioner-start-closed' => "false",
+								//'role'=>"caption",
+								//'data-captioner-type'=>"animated",
+								//'alt'=>$article['discription'],
+								'class'=>'img-responsive img-rounded'
+							));
+		 ?>						
+		<figcaption>
+		<div style="padding: 22em 0em 0em 0em;">
+			<p style="display:"><a href="http://amazon.co.jp" role="button">この号をAmazon.co.jpで購入する</a></p>
+			<p style="display:"><a href="#" role="button">この雑誌を定期購読する</a></p>
+		</div>
+		</figcaption>			
+		</figure>
+		</div>
+
 		</div>
 		<?/****説明文****/ ?>	
 		<div class="col-sm-4" style="background:white; border:1px solid; text-align:center; font-size:small;">
@@ -66,7 +76,7 @@
 		<td>
 		xxxx年x月号<br />
 		締切日:xxxx-xx-xx<br />
-		<?=Html::anchor(Uri::base().Uri::segment(1).'/apply/', '懸賞に応募する');?><br />
+		<?=Html::anchor(Uri::base().MODULE_NAME.'/apply/form/', '懸賞に応募する');?><br />
 		</td>
 		</tr>
 		</table>

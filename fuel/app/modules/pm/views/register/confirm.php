@@ -53,8 +53,7 @@
 </div>
 
 <?php 
-echo Form::open(Uri::create("pm/register/index/",array(),array(),true));
-
+echo Form::open(Uri::create(MODULE_NAME."/register/index/",array(),array(),true));
 //CSRF対策
 echo Form::csrf();
 
@@ -76,7 +75,7 @@ echo Form::hidden('email',$input['email']);
 
 
 <?php 
-echo Form::open(Uri::create("pm/register/send/",array(),array(),true));
+echo Form::open(Uri::create(MODULE_NAME."/register/send/",array(),array(),true));
 
 //CSRF対策
 echo Form::csrf();

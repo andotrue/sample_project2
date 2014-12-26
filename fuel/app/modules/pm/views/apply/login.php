@@ -19,7 +19,7 @@
 <? endif; ?>
 
 	<div id='container'>
-		<form method="post" name="form1" id="form1" action="<?= Uri::create("pm/apply/login/",array(),array(),true); ?>" role="form" class='FlowupLabels'>
+		<form method="post" name="form1" id="form1" action="<?= Uri::create(MODULE_NAME."/apply/login/",array(),array(),true); ?>" role="form" class='FlowupLabels'>
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='email'>Eメール :</label>
 				<input name='email' value='<?=Input::post('email')?>' class='fl_input' type='email' id='email' style="width:100%;" placeholder=""/>
@@ -34,13 +34,14 @@
 				<input class='rf_submit' type='submit' value='ログイン' />
 			</p>
 		</form>
+
+		<div style="text-align:center;">
+			<p><?=Html::anchor(Uri::create("pm/register/",array(),array(),true), "会員登録はこちら");?></p>
+			
+			<p><?=Html::anchor(Uri::create("pm/reminder/",array(),array(),true), "パスワードを忘れた方はこちら");?></p>
+		</div>
+		
 	</div>
 
-<!-- ヴァリデーションチェック -->
-<script type="text/javascript">
-$(function(){
-	jQuery("#form1").validationEngine();
-});
-</script>
 
 	

@@ -11,7 +11,7 @@
 <?php echo $html_error; ?>
 <?php endif; ?>
 	<div id='container'>
-		<form method="post" name="form1" id="form1" action="<?= Uri::create("pm/register/confirm/",array(),array(),true); ?>" role="form" class='FlowupLabels'>
+		<form method="post" name="form1" id="form1" action="<?= Uri::create(MODULE_NAME."/register/confirm/",array(),array(),true); ?>" role="form" class='FlowupLabels'>
 			<div style="margin: 0px 100px;" class='fl_wrap'>
 				<label class='fl_label' for='name'>お名前 <span style="font-size:small;color:red">※必須</span>:</label>
 				<input name='name' value='<?=Input::post('name')?>' class='fl_input validate[required]' type='text' id='name' style="width:100%;" />

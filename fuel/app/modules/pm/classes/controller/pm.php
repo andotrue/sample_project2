@@ -59,6 +59,6 @@ namespace pm;
 		//ログアウト
 		\Auth::logout();
 		//ログアウト画面の表示
-		\Response::redirect(\Uri::create("pm/",array(),array(),false));
+		\Response::redirect(\Uri::create(MODULE_NAME."/",array(),array(),false));
 	}
 }

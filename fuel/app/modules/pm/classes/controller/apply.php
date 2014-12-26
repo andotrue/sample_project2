@@ -1,6 +1,5 @@
 <?php
 namespace pm;
-require_once realpath(__DIR__.'/common.php');
 
  class Controller_Apply extends Controller_Public
 {
@@ -45,11 +44,10 @@ require_once realpath(__DIR__.'/common.php');
 			//config/auth.php ファイルのキー"driver"でロードする Login ドライバを設定。
 			//最初のドライバが Auth::instance() のデフォルト返り値にもなります。
 			$auth = \Auth::instance();
-			// 資格情報の確認
 			if ($auth->login($_POST['email'],$_POST['password']))
 			{
-				// 認証OKならトップページへ
-				\Response::redirect(\Uri::create("pm/apply/form/",array(),array(),true));
+				// 認証OKなら応募ページへ
+				\Response::redirect(\Uri::create(MODULE_NAME."/apply/form/",array(),array(),true));
 			}
 			else
 			{
@@ -66,9 +64,18 @@ require_once realpath(__DIR__.'/common.php');
 
 	public function action_form()
 	{
-		$this->template->title = "懸賞に応募｜パズルメイト";
-
-		$content['article'] = "";
-		$this->template->content = \View::forge('apply/form',$content);
+		if(\Auth::check())
+		{
+			$this->template->title = "懸賞に応募｜パズルメイト";
+	
+			$content['article'] = "";
+			$this->template->content = \View::forge('apply/form',$content);
+		}
+		else
+		{
+			// 認証NGならログインページへ
+			\Response::redirect(\Uri::create(MODULE_NAME."/apply/login/",array(),array(),true));
+			return;
+		}	
 	}
 }
