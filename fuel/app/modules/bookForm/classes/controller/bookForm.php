@@ -73,7 +73,7 @@ class Controller_bookForm extends Controller_Public
 		//メールの送信
 		try{
 //			$this->sendmail($data);
-			$mail = new \Model_Mail();//Mailモデルをインスタンス化
+			$mail = new Model_Mail();//Mailモデルをインスタンス化
 			$mail->send($post);
 			$this->template->title = ('コンタクトフォーム:　送信完了');
 			$this->template->content = \View::forge('form/send');
@@ -191,7 +191,7 @@ class Controller_bookForm extends Controller_Public
 		//メールの送信
 		try{
 //			$this->sendmail($data);
-			$mail = new \Model_Mail();//Mailモデルをインスタンス化
+			$mail = new Model_Mail();//Mailモデルをインスタンス化
 			$mail->send($post);
 			$this->template->title = ('コンタクトフォーム:　送信完了');
 			$this->template->content = \View::forge('form/send2');
