@@ -5,7 +5,7 @@
  * テスト実行コマンド
  * 		oil test --group=App
  * 
- * @group App
+ * @group App---
  */
 class Model_Mail_Test extends TestCase
 {

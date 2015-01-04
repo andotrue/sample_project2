@@ -6,5 +6,19 @@
  */
 
 return array(
-
+	/*
+	'defalut' => array(
+		'type' => 'mysqli',
+		'connection' => array(
+			'persistent' => false,
+		),
+		'identifer' => '`',
+		'table_prefix' => '',
+		'charset' => 'utf8',
+		'collation' => false,
+		'enable_cache' => true,
+		'profiling' => false,
+		'readonly' => false,
+	),
+	*/
 );
