@@ -20,25 +20,15 @@ class Model_Mail extends \Model
 	//メールの作成
 	protected function build_mail($post)
 	{
-		$data['from'] = $post['from'];
-		$data['from_name'] = $post['from_name'];
-		$data['to'] = 'andotrue@gmail.com';
-		$data['to_name'] = '管理者';
-		$data['subject'] = 'コンタクトフォーム';
-	
-		$ip = \Input::ip();
-		$agent = \Input::user_agent();
-	
-		$data['body'] = <<< END
----------------------------------------
-名前: {$post['from_name']}
-メールアドレス: {$post['from']}
-IPアドレス: $ip
-ブラウザ: $agent
----------------------------------------
-コメント:
-{$post['comment']}
-END;
+		\Config::load('mail_reminder', true);//設定ファイルをロードする
+		
+		$data['from'] = \Config::get('mail_reminder.admin_email');
+		$data['from_name'] = \Config::get('mail_reminder.admin_name');
+		$data['to'] = $post['to'];
+		$data['to_name'] = '';
+		$data['subject'] = \Config::get('mail_reminder.subject');
+			
+		$data['body'] = \Config::get('mail_reminder.body');
 	
 		return $data;
 	}

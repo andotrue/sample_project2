@@ -3,7 +3,7 @@
 	<div class="row">
 		<?/****画像****/ ?>	
 		<div class="col-sm-8" style="background:white; border:0px solid">
-		<?php echo Asset::img('pmtest1/magazine/'.$article['id'].'.jpg', 
+		<?php echo Asset::img(MODULE_IMG_PATH.'/magazine/'.$article['id'].'.jpg', 
 							array(
 								'width'=>'100%', 
 								'height'=>'', 
@@ -18,7 +18,7 @@
 		 
 		<div class="grid">
 		<figure class="effect-julia" style="min-width:100%; max-width:100%; min-height:100%; max-height:100%; height:500px">
-		<?php echo Asset::img('pmtest1/magazine/'.$article['id'].'.jpg', 
+		<?php echo Asset::img(MODULE_IMG_PATH.'/magazine/'.$article['id'].'.jpg', 
 							array(
 								'width'=>'100%', 
 								'height'=>'', 

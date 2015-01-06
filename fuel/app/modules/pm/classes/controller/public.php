@@ -11,6 +11,7 @@ class Controller_Public extends \Controller_Template
 	public function before()
 	{
 		define('MODULE_NAME', "pm");
+		define('MODULE_IMG_PATH', "pmtest1");
 		
 		parent::before();// この行がないと、テンプレートが動作しません!
 		$this->template->js=array(
