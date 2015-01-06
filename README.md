@@ -4,7 +4,7 @@
 
 * [【実践FuelPHP】gitで管理するFuelPHPプロジェクトをつくろう](http://dev.classmethod.jp/server-side/framework/fuelphp003/)
 
-* [FuelPHPのスキャフォールドとマイグレーションで作業効率化](megadreams14.com/?p=84)
+* [FuelPHPのスキャフォールドとマイグレーションで作業効率化](http://megadreams14.com/?p=84)
 
 * [FuelPHP【入門】-- CRUDを作った時のメモ(インストールからCRUD作成まで) --](http://qiita.com/ryurock/items/ae107a96699745a02560)
 
