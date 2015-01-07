@@ -8,6 +8,13 @@
  */
 class Test_Functional_Form extends FunctionalTestCase
 {
+	public static function setUpBeforeClass()
+	{
+		parent::setUpBeforeClass();
+		
+		DbFixture::load('forms', 'form');
+	}
+	
 	public function test_入力ページにアクセス()
 	{
 		try
@@ -201,5 +208,13 @@ class Test_Functional_Form extends FunctionalTestCase
 		$this->assertEquals($expected, $test);
 	}
 	
+	public function test_送信したデータの検証()
+	{
+		$form = Model_Form::find(4);
+		foreach (static::$post as $field => $value)
+		{
+			$this->assertEquals($value, $form[$field]);
+		}
+	}
 	
 }

@@ -11,15 +11,17 @@ class model_form_Test extends DbTestCase
 {
 	protected $tables = array(
 		//テーブル名 => YAMLファイル名
-		'form' => 'form',
+		//'form' => 'form',
+		'forms' => 'form',
 	);
 	
 	public function test_IDでレコードを検索する()
 	{
 		foreach ($this->form_fixt as $row)
 		{
-			$form = Model_Form::find_one_by_id($row['id']);
-			
+			//$form = Model_Form::find_one_by_id($row['id']);
+			$form = Model_Form::find($row['id']);
+				
 			foreach ($row as $field => $value)
 			{
 				$test = $form->$field;
@@ -40,13 +42,16 @@ class model_form_Test extends DbTestCase
 		);
 		
 		//forge()メソッドでオブジェクトを生成し、set()メソッドで新規データをセット
-		$form = Model_Form::forge()->set($data);
+		//$form = Model_Form::forge()->set($data);
+		$form = Model_Form::forge($data);
 		
 		//新規データをデータベースに挿入
-		list($id, $rows) = $form->save();
+		//list($id, $rows) = $form->save();
+		$ret = $form->save();
 		
 		//挿入されたデータをデータベースから検索
-		$form = Model_Form::find_by_pk($id);
+		//$form = Model_Form::find_by_pk($id);
+		$form = Model_Form::find($form->id);
 		
 		foreach ($data as $field => $value)
 		{

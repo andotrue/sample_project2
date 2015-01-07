@@ -1,4 +1,10 @@
 <?php
+/*
+ * oil g scaffold demo_scaffold title:varchar[50] content:text id:int
+ * 
+ * sample_project2/Demo/Scaffold
+ */
+
 class Controller_Demo_Scaffold extends Controller_Template
 {
 
