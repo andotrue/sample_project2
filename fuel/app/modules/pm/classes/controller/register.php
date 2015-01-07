@@ -114,8 +114,20 @@ namespace pm;
 			$tel = \Input::post('tel');
 			$email = \Input::post('email');
 			$password = \Input::post('password');
+					
+			//usernameの重複チェック
+			$same_users = \DB::select()->from('users')->where('username', $email)->execute();
+			if($same_users->count() > 0)
+			{
+				$this->template->title = '会員登録｜パズルメイト';
+				$this->template->content = \View::forge('register/index');
+				$this->template->content->set_safe('html_error', "既に登録されてるメールアドレスです。");
+				return;
+			}
 			
+			//DB登録処理
 			/*
+			//パターン０　プロフィールをカラムprofile_fieldに格納する場合
 			$profile_fields = array(
 								'furigana'=>$furigana,
 								'birthdate'=>$birthdate,
@@ -133,17 +145,9 @@ namespace pm;
 			// 新しいユーザーを作成
 			$auth->create_user($email,$password,$email,1,$profile_fields);
 			*/
-			
-			//usernameの重複チェック
-			$same_users = \DB::select()->from('users')->where('username', $email)->execute();
-			if($same_users->count() > 0)
-			{
-				$this->template->title = '会員登録｜パズルメイト';
-				$this->template->content = \View::forge('register/index');
-				$this->template->content->set_safe('html_error', "既に登録されてるメールアドレスです。");
-				return;
-			}
-			//DB登録処理
+
+			/*
+			//パターン１
 	 		$auth = \Auth::instance();// Authのインスタンス化
 			$data = array(
 						'username'=>$email,
@@ -159,6 +163,42 @@ namespace pm;
 						'tel'=>$tel,
 						);
 			list($insert_id, $rows_affected) = \DB::insert('users')->set($data)->execute();
+			*/
+			
+			//パターン２
+			try
+			{
+				$user = Model_User::forge();
+
+				$user->username=$email;
+				$auth = \Auth::instance();// Authのインスタンス化
+				$user->password=$auth->hash_password((string) $password);
+				$user->email=$email;
+				$user->name=$name;
+				$user->furigana=$furigana;
+				$user->birthdate=$birthdate;
+				$user->gender=$gender;
+				$user->age=$age;
+				$user->zipcode=$zipcode;
+				$user->address=$address;
+				$user->building=$building;
+				$user->tel=$tel;
+				
+				$user->last_login = '';
+				$user->login_hash = '';
+				$user->group = '';
+				$user->profile_fields = '';
+				
+				$user->save();
+			}
+			catch (Orm\ValidationFailed $e)
+			{
+				$this->template->title = '会員登録｜パズルメイト';
+				$this->template->content = \View::forge('register/index');
+				$this->template->content->set_safe('html_error', $e->getMessage());
+			}
+			
+				
 		}
 		
 		$this->template->title = ('会員登録｜パズルメイト:　登録完了');
