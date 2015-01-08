@@ -35,9 +35,9 @@ class Controller_Admin extends Controller_Base
 
 		if (Input::method() == 'POST')
 		{
-			$val->add('email', 'Email or Username')
+			$val->add('email', 'ユーザ名')
 			    ->add_rule('required');
-			$val->add('password', 'Password')
+			$val->add('password', 'パスワード')
 			    ->add_rule('required');
 
 			if ($val->run())
@@ -56,17 +56,17 @@ class Controller_Admin extends Controller_Base
 					{
 						$current_user = Model_User::find_by_username(Auth::get_screen_name());
 					}
-					Session::set_flash('success', e('Welcome, '.$current_user->username));
+					Session::set_flash('success', e('ようこそ、 '.$current_user->username));
 					Response::redirect('admin');
 				}
 				else
 				{
-					$this->template->set_global('login_error', 'Fail');
+					$this->template->set_global('login_error', '失敗しました');
 				}
 			}
 		}
 
-		$this->template->title = 'Login';
+		$this->template->title = 'ログイン';
 		$this->template->content = View::forge('admin/login', array('val' => $val), false);
 	}
 
@@ -91,7 +91,8 @@ class Controller_Admin extends Controller_Base
 	public function action_index()
 	{
 		$this->template->title = 'Dashboard';
-		$this->template->content = View::forge('admin/dashboard');
+		//$this->template->content = View::forge('admin/dashboard');
+		$this->template->content = Request::forge('admin/form')->execute();
 	}
 
 }

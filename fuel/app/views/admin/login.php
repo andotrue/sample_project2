@@ -11,25 +11,25 @@
 			<?php endif; ?>
 
 			<div class="form-group <?php echo ! $val->error('email') ?: 'has-error' ?>">
-				<label for="email">Email or Username:</label>
-				<?php echo Form::input('email', Input::post('email'), array('class' => 'form-control', 'placeholder' => 'Email or Username', 'autofocus')); ?>
+				<label for="email">ユーザ名:</label>
+				<?php echo Form::input('email', Input::post('email'), array('class' => 'form-control', 'placeholder' => 'ユーザ名', 'autofocus')); ?>
 
 				<?php if ($val->error('email')): ?>
-					<span class="control-label"><?php echo $val->error('email')->get_message('You must provide a username or email'); ?></span>
+					<span class="control-label"><?php echo $val->error('email')->get_message(':label を入力してください'); ?></span>
 				<?php endif; ?>
 			</div>
 
 			<div class="form-group <?php echo ! $val->error('password') ?: 'has-error' ?>">
-				<label for="password">Password:</label>
-				<?php echo Form::password('password', null, array('class' => 'form-control', 'placeholder' => 'Password')); ?>
+				<label for="password">パスワード:</label>
+				<?php echo Form::password('password', null, array('class' => 'form-control', 'placeholder' => 'パスワード')); ?>
 
 				<?php if ($val->error('password')): ?>
-					<span class="control-label"><?php echo $val->error('password')->get_message(':label cannot be blank'); ?></span>
+					<span class="control-label"><?php echo $val->error('password')->get_message(':label を入力してください'); ?></span>
 				<?php endif; ?>
 			</div>
 
 			<div class="actions">
-				<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-lg btn-primary btn-block')); ?>
+				<?php echo Form::submit(array('value'=>'ログイン', 'name'=>'submit', 'class' => 'btn btn-lg btn-primary btn-block')); ?>
 			</div>
 
 		<?php echo Form::close(); ?>

@@ -4,8 +4,11 @@ class Controller_Admin_Form extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['forms'] = Model_Form::find('all');
-		$this->template->title = "Forms";
+		$data['forms'] = Model_Form::find(
+				'all',
+				array('order_by' => array('created_at' => 'desc'))
+			);
+		$this->template->title = "問い合わせ";
 		$this->template->content = View::forge('admin/form/index', $data);
 
 	}
