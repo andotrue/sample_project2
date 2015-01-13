@@ -56,7 +56,7 @@ class Controller_Admin extends Controller_Base
 					{
 						$current_user = Model_User::find_by_username(Auth::get_screen_name());
 					}
-					Session::set_flash('success', e('ようこそ、 '.$current_user->username));
+					Session::set_flash('success', e('ようこそ、 '.$current_user->username).'さん');
 					Response::redirect('admin');
 				}
 				else
@@ -90,9 +90,10 @@ class Controller_Admin extends Controller_Base
 	 */
 	public function action_index()
 	{
-		$this->template->title = 'Dashboard';
+		$this->template->title = 'ダッシュボード';
 		//$this->template->content = View::forge('admin/dashboard');
-		$this->template->content = Request::forge('admin/form')->execute();
+		//$this->template->content = Request::forge('admin/form')->execute();
+		Response::redirect('admin/form');
 	}
 
 }
