@@ -17,13 +17,15 @@ class Controller_Admin_Form extends Controller_Admin
 	{
 		$data['form'] = Model_Form::find($id);
 
-		$this->template->title = "Form";
+		$this->template->title = "問い合わせ #" . $id;
 		$this->template->content = View::forge('admin/form/view', $data);
 
 	}
 
 	public function action_create()
 	{
+		throw new HttpNotFoundException;
+		
 		if (Input::method() == 'POST')
 		{
 			$val = Model_Form::validate('create');
@@ -63,6 +65,8 @@ class Controller_Admin_Form extends Controller_Admin
 
 	public function action_edit($id = null)
 	{
+		throw new HttpNotFoundException;
+		
 		$form = Model_Form::find($id);
 		$val = Model_Form::validate('edit');
 
@@ -110,6 +114,8 @@ class Controller_Admin_Form extends Controller_Admin
 
 	public function action_delete($id = null)
 	{
+		throw new HttpNotFoundException;
+		
 		if ($form = Model_Form::find($id))
 		{
 			$form->delete();

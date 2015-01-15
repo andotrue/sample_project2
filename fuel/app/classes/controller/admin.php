@@ -92,8 +92,7 @@ class Controller_Admin extends Controller_Base
 	{
 		$this->template->title = 'ダッシュボード';
 		//$this->template->content = View::forge('admin/dashboard');
-		//$this->template->content = Request::forge('admin/form')->execute();
-		Response::redirect('admin/form');
+		$this->template = Request::forge('admin/form')->execute();
 	}
 
 }
