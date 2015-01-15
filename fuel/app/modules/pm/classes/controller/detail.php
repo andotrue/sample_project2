@@ -14,12 +14,17 @@ namespace pm;
 		array_push($this->template->js, 'CaptionerJs/CaptionerJs.min.js'
 		);
 		
+		$this->template->js2 = isset($this->template->js2)? $this->template->js2 : array();
+		array_push($this->template->js2, 'oz-scroll-up/oz-scroll-up.js'
+		);
+		
 		$this->template->css = isset($this->template->css)? $this->template->css : array();
 		array_push($this->template->css, 'CaptionerJs/CaptionerJs.min.css'
 										//,'HoverEffectIdeas/css/normalize.css'
 										//,'HoverEffectIdeas/css/demo.css'
 										,'HoverEffectIdeas/css/set2.css'
 										//,'HoverEffectIdeas/fonts/font-awesome-4.2.0/css/font-awesome.min.css'
+										,'oz-scroll-up/oz-scroll.css'
 		);
 
 	}

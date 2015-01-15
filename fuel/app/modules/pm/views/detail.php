@@ -1,4 +1,9 @@
 <p style="background-color: #00AEEF; text-align:center; color:white; border:1px solid">各誌紹介　詳細</p>
+
+<!-- Start Scroll To Top Button -->
+<a id="oz-scroll" class="style3" href="#"></a>
+<!-- End Scroll To Top Button -->
+
 <div class="container">
 	<div class="row">
 		<?/****画像****/ ?>	
@@ -38,7 +43,7 @@
 		</figcaption>			
 		</figure>
 		</div>
-
+		
 		</div>
 		<?/****説明文****/ ?>	
 		<div class="col-sm-4" style="background:white; border:1px solid; text-align:center; font-size:small;">
