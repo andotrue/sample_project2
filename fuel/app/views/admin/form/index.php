@@ -22,7 +22,8 @@
 			<td><?php echo $item->ip_address; ?></td>
 			<td>
 				<?php echo Html::anchor('admin/form/view/'.$item->id, '表示'); ?>
-
+				｜<?php echo Html::anchor('admin/form/edit/'.$item->id, '編集'); ?>
+				
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>

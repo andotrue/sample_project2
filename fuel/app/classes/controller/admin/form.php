@@ -65,7 +65,7 @@ class Controller_Admin_Form extends Controller_Admin
 
 	public function action_edit($id = null)
 	{
-		throw new HttpNotFoundException;
+//		throw new HttpNotFoundException;
 		
 		$form = Model_Form::find($id);
 		$val = Model_Form::validate('edit');
